@@ -38,5 +38,12 @@ async function addAuthor(courseId, author) {
   course.save();
 }
 
+async function removeAuthor(courseId, authorId) {
+  const course = await Course.findById(courseId);
+  const author = course.authors.id(authorId);
+  author.remove();
+  course.save();
+}
 
-addAuthor('6541e3092aaa6104835c8552', new Author({ name: 'Jennifer'}))
+
+removeAuthor('6541e3092aaa6104835c8552', '6541f051bbdc3604ca0a0221')
